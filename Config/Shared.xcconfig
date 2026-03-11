@@ -1,0 +1,12 @@
+PRODUCT_NAME = CardDeckPicker
+PRODUCT_DISPLAY_NAME = Card Deck Picker
+PRODUCT_BUNDLE_IDENTIFIER = com.nachocerrato.CardDeckPicker
+MARKETING_VERSION = 1.0
+CURRENT_PROJECT_VERSION = 1
+
+IPHONEOS_DEPLOYMENT_TARGET = 18.0
+TARGETED_DEVICE_FAMILY = 1,2
+
+GENERATE_INFOPLIST_FILE = YES
+INFOPLIST_KEY_UISupportedInterfaceOrientations = portrait
+INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown
