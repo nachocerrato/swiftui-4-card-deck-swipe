@@ -1,38 +1,29 @@
 import UIKit
 
 enum DemoCard: String, CaseIterable, Identifiable {
-    case card1 = "Icon1"
-    case card2 = "Icon2"
-    case card3 = "Icon3"
-    case card4 = "Icon4"
+    case card1 = "iconLight"
+    case card2 = "icondark"
+    case card3 = "iconproaurora"
+    case card4 = "iconpronight"
 
     private static let storageKey = "demo.selectedIcon"
 
     var id: String { rawValue }
 
     var iconName: String? {
-        switch self {
-        case .card1:
-            return nil
-        case .card2:
-            return "Dark"
-        case .card3:
-            return "Aurora"
-        case .card4:
-            return "AuroraDark"
-        }
+        rawValue
     }
 
     var displayName: String {
         switch self {
         case .card1:
-            return "Card 1"
+            return "Light"
         case .card2:
-            return "Card 2"
+            return "Dark"
         case .card3:
-            return "Card 3"
+            return "Pro Aurora"
         case .card4:
-            return "Card 4"
+            return "Pro Night"
         }
     }
 
@@ -47,11 +38,26 @@ enum DemoCard: String, CaseIterable, Identifiable {
     static func current() -> DemoCard {
         guard
             let rawValue = UserDefaults.standard.string(forKey: storageKey),
-            let icon = DemoCard(rawValue: rawValue)
+            let icon = DemoCard(rawValue: rawValue) ?? legacyIcon(for: rawValue)
         else {
             return .card1
         }
         return icon
+    }
+
+    private static func legacyIcon(for rawValue: String) -> DemoCard? {
+        switch rawValue {
+        case "Icon1":
+            return .card1
+        case "Icon2":
+            return .card2
+        case "Icon3":
+            return .card3
+        case "Icon4":
+            return .card4
+        default:
+            return nil
+        }
     }
 
     func save() {
